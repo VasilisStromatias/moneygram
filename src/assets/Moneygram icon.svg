@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="284" height="276" viewBox="0 0 284 276">
+  <defs>
+    <style>
+      .cls-1 {
+        <!-- stroke: #000; -->
+        stroke-width: 1px;
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        font-size: 150px;
+        fill: #fff;
+        font-family: "Intro Book";
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="140" y1="263" x2="140" y2="13" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#29f19c"/>
+      <stop offset="1" stop-color="#02a1f9"/>
+    </linearGradient>
+  </defs>
+  <g id="Artboard_1" data-name="Artboard 1">
+    <g>
+      <circle class="cls-1" cx="140" cy="138" r="125"/>
+      <text id="M" class="cls-2" x="78.25" y="190.75">M</text>
+    </g>
+  </g>
+</svg>
