@@ -1,5 +1,6 @@
 .home-page {
   padding-block: 50px;
+  min-height: 1000px;
 }
 
 .home-page-wrapper {
@@ -41,7 +42,61 @@
 }
 
 .plus-button {
-  margin-top: 40px;
+  background-image: url(../../assets/plus-button.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 48px;
+  height: 48px;
   text-align: center;
   cursor: pointer;
+  position: relative;
+}
+
+.plus-section {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.plus-options {
+  position: absolute;
+  top: -150px;
+  right: -80px;
+  width: 0;
+  height: 0;
+  transition: 0.2s ease;
+  & img {
+    width: 0;
+    height: 0;
+    transition: 0.2s ease;
+  }
+  &.open {
+    top: -150px;
+    right: -80px;
+    background-color: #fff;
+    box-shadow: 0 0 15px -4px #000;
+    border-radius: 20px;
+    padding: 20px;
+    display: block;
+    width: auto;
+    height: auto;
+    & img {
+      width: auto;
+      height: auto;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.plus-otions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ReactModal__Overlay--after-open {
+  background-color: rgba(0, 0, 0, 0.2) !important;
 }
