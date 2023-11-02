@@ -1,3 +1,47 @@
-h1 {
-  @include font32;
+.home-page {
+  padding-block: 50px;
+}
+
+.home-page-wrapper {
+  max-width: 1600px;
+  padding: 0 10px;
+  margin: 0 auto;
+  width: 97%;
+}
+
+.balance-section {
+  background-color: var(--clr-main-blue);
+  border-radius: 30px;
+}
+
+.balance-section-inner {
+  padding: 50px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  & > div {
+    & h2 {
+      margin-bottom: 20px;
+      color: #fff;
+      @include font32;
+      font-weight: 600;
+    }
+    & span {
+      display: block;
+      color: #fff;
+      text-align: center;
+      font-weight: 500;
+      @include font17;
+    }
+  }
+}
+
+.plus-button {
+  margin-top: 40px;
+  text-align: center;
+  cursor: pointer;
 }

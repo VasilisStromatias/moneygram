@@ -1,9 +1,16 @@
 import React from "react";
+import Balance from "./Balance";
+import PlusButton from "./PlusButton";
 
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="home-page">
+      <div className="home-page-wrapper">
+        <div className="home-page-inner">
+          <Balance />
+          <PlusButton />
+        </div>
+      </div>
     </div>
   );
 }
