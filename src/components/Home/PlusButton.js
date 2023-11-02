@@ -11,13 +11,13 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    minWidth: "50%",
-    minHeight: "50%",
+    minWidth: "30%",
+    minHeight: "40%",
     transform: "translate(-50%, -50%)",
     borderRadius: "30px",
     border: 0,
     padding: "40px",
-    backgroundColor: "#26eaa4",
+    backgroundColor: "#20b480",
   },
 };
 
@@ -25,11 +25,15 @@ function PlusButton() {
   const [incomeIsOpen, setIncomeIsOpen] = useState(false);
   const [outcomeIsOpen, setOutcomeIsOpen] = useState(false);
 
+  const [incomeInput, setIncomeInput] = useState("0.00");
+  const [outcomeInput, setOutcomeInput] = useState("0.00");
+
   const openIncome = () => {
     setIncomeIsOpen(true);
   };
   const closeIncome = () => {
     setIncomeIsOpen(false);
+    setIncomeInput("0.00");
   };
 
   const openOutcome = () => {
@@ -37,6 +41,19 @@ function PlusButton() {
   };
   const closeOutcome = () => {
     setOutcomeIsOpen(false);
+    setOutcomeInput("0.00");
+  };
+
+  const incomeValueChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    setIncomeInput(value);
+  };
+
+  const outcomeValueChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    setOutcomeInput(value);
   };
 
   const togglePlus = () => {
@@ -72,8 +89,21 @@ function PlusButton() {
         onRequestClose={closeIncome}
         style={customStyles}
         contentLabel="Income Modal"
+        appElement={document.getElementById("root")}
       >
-        <p>Income</p>
+        <div className="modal-inner">
+          <label htmlFor="income-input"> Add some income</label>
+          <input
+            type="number"
+            min={0.05}
+            max={2500.0}
+            step={0.05}
+            id="income-input"
+            value={incomeInput}
+            onChange={incomeValueChange}
+            placeholder={incomeInput}
+          />
+        </div>
       </Modal>
 
       <Modal
@@ -81,8 +111,21 @@ function PlusButton() {
         onRequestClose={closeOutcome}
         style={customStyles}
         contentLabel="Outcome Modal"
+        appElement={document.getElementById("root")}
       >
-        <p>Outcome</p>
+        <div className="modal-inner">
+          <label htmlFor="outcome-input"> Add some outcome</label>
+          <input
+            type="text"
+            min={0.05}
+            max={2500.0}
+            step={0.05}
+            id="outcome-input"
+            value={outcomeInput}
+            onChange={outcomeValueChange}
+            placeholder={outcomeInput}
+          />
+        </div>
       </Modal>
     </>
   );

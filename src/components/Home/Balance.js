@@ -18,7 +18,7 @@ function Balance() {
               displayType={"text"}
               thousandSeparator={true}
               suffix={currency}
-              decimalScale="2"
+              decimalScale={2}
             />
           </span>
         </div>
@@ -30,7 +30,7 @@ function Balance() {
               displayType={"text"}
               thousandSeparator={true}
               suffix={currency}
-              decimalScale="2"
+              decimalScale={2}
             />
           </span>
         </div>
@@ -42,7 +42,7 @@ function Balance() {
               displayType={"text"}
               thousandSeparator={true}
               suffix={currency}
-              decimalScale="2"
+              decimalScale={2}
             />
           </span>
         </div>
