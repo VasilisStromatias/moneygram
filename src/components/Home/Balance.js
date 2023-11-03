@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import CurrencyFormat from "react-currency-format";
 
-function Balance() {
+function Balance({ data }) {
   const [currency, setCurrency] = useState("€");
-  const [income, setIncome] = useState(100.65);
-  const [outcome, setOutcome] = useState(150.11);
-  const [balance, setBalance] = useState(income - outcome);
+  const [income, setIncome] = useState(data.income);
+  const [outcome, setOutcome] = useState(data.outcome);
+  const [balance, setBalance] = useState(data.income - data.outcome);
+
+  // console.log(data.income);
+  // console.log(data.outcome);
 
   return (
     <div className="balance-section">
@@ -14,7 +17,7 @@ function Balance() {
           <h2>Income</h2>
           <span className="income-value">
             <CurrencyFormat
-              value={income}
+              value={data.income}
               displayType={"text"}
               thousandSeparator={true}
               suffix={currency}
@@ -26,7 +29,7 @@ function Balance() {
           <h2>Balance</h2>
           <span className="balance-value">
             <CurrencyFormat
-              value={balance}
+              value={data.income - data.outcome}
               displayType={"text"}
               thousandSeparator={true}
               suffix={currency}
@@ -38,7 +41,7 @@ function Balance() {
           <h2>Outcome</h2>
           <span className="outcome-value">
             <CurrencyFormat
-              value={outcome}
+              value={data.outcome}
               displayType={"text"}
               thousandSeparator={true}
               suffix={currency}

@@ -119,4 +119,18 @@
     padding: 10px 20px;
     border-radius: 20px;
   }
+  & button {
+    display: block;
+    border: 0;
+    background-color: transparent;
+    @include font17;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+    width: 100%;
+    max-width: 100px;
+    margin: 20px auto 0;
+    cursor: pointer;
+  }
 }

@@ -21,19 +21,19 @@ const customStyles = {
   },
 };
 
-function PlusButton() {
+function PlusButton({ data }) {
   const [incomeIsOpen, setIncomeIsOpen] = useState(false);
   const [outcomeIsOpen, setOutcomeIsOpen] = useState(false);
 
-  const [incomeInput, setIncomeInput] = useState("0.00");
-  const [outcomeInput, setOutcomeInput] = useState("0.00");
+  const [incomeInput, setIncomeInput] = useState(0);
+  const [outcomeInput, setOutcomeInput] = useState(0);
 
   const openIncome = () => {
     setIncomeIsOpen(true);
   };
   const closeIncome = () => {
     setIncomeIsOpen(false);
-    setIncomeInput("0.00");
+    setIncomeInput(0);
   };
 
   const openOutcome = () => {
@@ -41,24 +41,36 @@ function PlusButton() {
   };
   const closeOutcome = () => {
     setOutcomeIsOpen(false);
-    setOutcomeInput("0.00");
+    setOutcomeInput(0);
   };
 
   const incomeValueChange = (e) => {
     const target = e.target;
     const value = target.value;
-    setIncomeInput(value);
+    setIncomeInput(parseFloat(value));
   };
 
   const outcomeValueChange = (e) => {
     const target = e.target;
     const value = target.value;
-    setOutcomeInput(value);
+    setOutcomeInput(parseFloat(value));
   };
 
   const togglePlus = () => {
     $("body").toggleClass("plus-menu-opened");
     $(".plus-options").toggleClass("open");
+  };
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    const inc = incomeInput;
+    const out = outcomeInput;
+    data.setIncome(inc);
+    data.setOutcome(out);
+    setOutcomeIsOpen(false);
+    setIncomeIsOpen(false);
+    setOutcomeInput(0);
+    setIncomeInput(0);
   };
 
   return (
@@ -92,17 +104,20 @@ function PlusButton() {
         appElement={document.getElementById("root")}
       >
         <div className="modal-inner">
-          <label htmlFor="income-input"> Add some income</label>
-          <input
-            type="number"
-            min={0.05}
-            max={2500.0}
-            step={0.05}
-            id="income-input"
-            value={incomeInput}
-            onChange={incomeValueChange}
-            placeholder={incomeInput}
-          />
+          <form onSubmit={formSubmit}>
+            <label htmlFor="income-input"> Add some income</label>
+            <input
+              type="number"
+              min={0.05}
+              max={2500.0}
+              step={0.05}
+              id="income-input"
+              value={incomeInput}
+              onChange={incomeValueChange}
+              placeholder={incomeInput}
+            />
+            <button>OK</button>
+          </form>
         </div>
       </Modal>
 
@@ -114,17 +129,20 @@ function PlusButton() {
         appElement={document.getElementById("root")}
       >
         <div className="modal-inner">
-          <label htmlFor="outcome-input"> Add some outcome</label>
-          <input
-            type="text"
-            min={0.05}
-            max={2500.0}
-            step={0.05}
-            id="outcome-input"
-            value={outcomeInput}
-            onChange={outcomeValueChange}
-            placeholder={outcomeInput}
-          />
+          <form onSubmit={formSubmit}>
+            <label htmlFor="outcome-input"> Add some outcome</label>
+            <input
+              type="number"
+              min={0.05}
+              max={2500.0}
+              step={0.05}
+              id="outcome-input"
+              value={outcomeInput}
+              onChange={outcomeValueChange}
+              placeholder={outcomeInput}
+            />
+            <button>OK</button>
+          </form>
         </div>
       </Modal>
     </>
