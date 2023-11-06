@@ -3,8 +3,8 @@ import Balance from "./Balance";
 import PlusButton from "./PlusButton";
 
 function Home() {
-  const [income, setIncome] = useState(0);
-  const [outcome, setOutcome] = useState(0);
+  const [income, setIncome] = useState({value : 0});
+  const [outcome, setOutcome] = useState({value : 0});
 
   const sessionData = {
     income,
@@ -13,7 +13,7 @@ function Home() {
     setOutcome,
   };
 
-  // console.log(outcome);
+   console.log( income , outcome );
 
   return (
     <div className="home-page">

@@ -61,17 +61,23 @@ function PlusButton({ data }) {
     $(".plus-options").toggleClass("open");
   };
 
-  const formSubmit = (e) => {
+  const incomeSubmit = (e) => {
     e.preventDefault();
     const inc = incomeInput;
-    const out = outcomeInput;
-    data.setIncome(inc);
-    data.setOutcome(out);
-    setOutcomeIsOpen(false);
+    data.setIncome({...data.income, value : data.income.value +  inc});
     setIncomeIsOpen(false);
-    setOutcomeInput(0);
     setIncomeInput(0);
   };
+
+  const outcomeSubmit = (e) => {
+    e.preventDefault();
+    const out = outcomeInput;
+    data.setOutcome({...data.income,value : data.outcome.value + out});
+    setOutcomeIsOpen(false);
+    setOutcomeInput(0);
+  };
+
+
 
   return (
     <>
@@ -104,13 +110,13 @@ function PlusButton({ data }) {
         appElement={document.getElementById("root")}
       >
         <div className="modal-inner">
-          <form onSubmit={formSubmit}>
+          <form onSubmit={incomeSubmit}>
             <label htmlFor="income-input"> Add some income</label>
             <input
               type="number"
-              min={0.05}
+              min={0.01}
               max={2500.0}
-              step={0.05}
+              step={0.01}
               id="income-input"
               value={incomeInput}
               onChange={incomeValueChange}
@@ -129,13 +135,13 @@ function PlusButton({ data }) {
         appElement={document.getElementById("root")}
       >
         <div className="modal-inner">
-          <form onSubmit={formSubmit}>
+          <form onSubmit={outcomeSubmit}>
             <label htmlFor="outcome-input"> Add some outcome</label>
             <input
               type="number"
-              min={0.05}
+              min={0.01}
               max={2500.0}
-              step={0.05}
+              step={0.01}
               id="outcome-input"
               value={outcomeInput}
               onChange={outcomeValueChange}
