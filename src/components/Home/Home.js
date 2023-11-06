@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Balance from "./Balance";
 import PlusButton from "./PlusButton";
+import { useLocalStorage } from "../../localStorage";
 
 function Home() {
-  const [income, setIncome] = useState({value : 0});
-  const [outcome, setOutcome] = useState({value : 0});
+  const [income, setIncome] = useState({value : 0, category : ''});
+  const [outcome, setOutcome] = useState({value : 0 , category : ''});
+
+  const {setLocalStorageData, getLocalStorageData} = useLocalStorage('DATA');
+
+  useEffect ( () => {
+    setLocalStorageData({
+      income : income.value , 
+      outcome : outcome.value ,  
+      balance: income.value-outcome.value 
+    })
+    console.log(getLocalStorageData());
+  }, [income, outcome])
+
 
   const sessionData = {
     income,
@@ -12,8 +25,6 @@ function Home() {
     outcome,
     setOutcome,
   };
-
-   console.log( income , outcome );
 
   return (
     <div className="home-page">

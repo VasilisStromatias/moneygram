@@ -17,7 +17,7 @@ const customStyles = {
     borderRadius: "30px",
     border: 0,
     padding: "40px",
-    backgroundColor: "#20b480",
+    backgroundColor: "#26eaa4",
   },
 };
 
